@@ -10,13 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    serpentlibwindow.cpp
+    gui/serpentlibwindow.cpp
 
 HEADERS += \
-    serpentlibwindow.h
+    gui/serpentlibwindow.h
 
 FORMS += \
-    serpentlibwindow.ui
+    gui/ui/serpentlibwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
