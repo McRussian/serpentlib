@@ -1,5 +1,5 @@
+#include <QtTest>
 #include "test_author.h"
-
 
 int main(int argc, char *argv[])
 {

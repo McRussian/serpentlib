@@ -1,4 +1,4 @@
-#include "serpentlibwindow.h"
+#include "gui/serpentlibwindow.h"
 
 #include <QApplication>
 

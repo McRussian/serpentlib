@@ -1,33 +1,24 @@
 QT += testlib sql
+
 TARGET = tst_database
 CONFIG += console c++17 warn_on
 CONFIG -= app_bundle
-
-# Пути для выходных файлов
-DESTDIR = $$OUT_PWD/bin
-OBJECTS_DIR = $$OUT_PWD/obj/tests/database
-MOC_DIR = $$OUT_PWD/moc
+CONFIG += automoc
 
 # Исходники тестов
 SOURCES += \
-    main.cpp \
-    test_author.cpp
+    test_author.cpp \
+    main.cpp
 
 HEADERS += \
     test_author.h
 
-# Подключаем тестируемый класс
+# Правильные пути к исходникам основного проекта
 INCLUDEPATH += $$PWD/../../src
-SOURCES += $$PWD/../../src/database/models/author.cpp
-HEADERS += $$PWD/../../src/database/models/author.h
+DEPENDPATH += $$PWD/../../src
 
-# Автоматическая генерация moc-файлов
-CONFIG += automoc
-
-# Для MacOS
-macx {
-    QMAKE_INFO_PLIST = Info_test.plist
-}
+# Для временной БД в памяти
+DEFINES += IN_MEMORY_DB
 
 # Очистка тестовой БД после выполнения
 QMAKE_POST_LINK += $$QMAKE_DEL_FILE $$DESTDIR/test_author.db
