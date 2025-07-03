@@ -1,8 +1,5 @@
 #include "author.h"
 
-// Инициализация статической переменной
-QSqlDatabase* Author::s_db = nullptr;
-
 Author::Author() :
     m_id(0),
     m_firstName(""),
@@ -31,19 +28,10 @@ void Author::setSurname(const QString &surname) { m_surname = surname; }
 void Author::setComment(const QString &comment) { m_comment = comment; }
 
 // Статические методы
-void Author::setDatabase(QSqlDatabase* database)
-{
-    s_db = database;
-}
-
 bool Author::createTable()
 {
-    if (!s_db->isOpen()) {
-        qWarning() << "Database is not open!";
-        return false;
-    }
-
-    QSqlQuery query;
+    QSqlDatabase& db = DataBase::instance().database();
+    QSqlQuery query(db);
     return query.exec("CREATE TABLE IF NOT EXISTS authors ("
                       "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                       "first_name TEXT, "
@@ -55,12 +43,8 @@ bool Author::createTable()
 // Методы экземпляра
 bool Author::save()
 {
-    if (!s_db->isOpen()) {
-        qWarning() << "Database is not open!";
-        return false;
-    }
-
-    QSqlQuery query;
+    QSqlDatabase& db = DataBase::instance().database();
+    QSqlQuery query(db);
 
     // Вставка нового автора
     query.prepare("INSERT INTO authors (first_name, last_name, surname, comment) "
@@ -84,12 +68,8 @@ bool Author::save()
 
 bool Author::update()
 {
-    if (!s_db->isOpen()) {
-        qWarning() << "Database is not open!";
-        return false;
-    }
-
-    QSqlQuery query;
+    QSqlDatabase& db = DataBase::instance().database();
+    QSqlQuery query(db);
 
     // Обновление существующего
     query.prepare("UPDATE authors SET "

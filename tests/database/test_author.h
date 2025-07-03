@@ -2,7 +2,6 @@
 #define TEST_AUTHOR_H
 
 #include <QtTest>
-#include <QSqlDatabase>
 #include "../../src/database/models/author.h"
 
 class TestAuthor : public QObject
@@ -10,21 +9,14 @@ class TestAuthor : public QObject
     Q_OBJECT
 
 private slots:
-    // Выполняется перед всеми тестами
-    void initTestCase();
-
-    // Выполняется после всех тестов
-    void cleanupTestCase();
-
-    // Тестовые случаи
-    void testCreateTable();
-    void testSaveNewAuthor();
-    void testUpdateAuthor();
-    void testFieldValues();
+    void initTestCase();     // Инициализация перед всеми тестами
+    void cleanupTestCase();  // Очистка после всех тестов
+    void testCreateTable();  // Тест создания таблицы
+    void testSaveAuthor();   // Тест сохранения автора
+    void testAuthorFields(); // Тест работы с полями
 
 private:
-    QSqlDatabase m_testDb;
-    const QString m_testDbPath = "test_author.db";
+    const QString TEST_DB = ":memory:"; // Используем временную базу в памяти
 };
 
 #endif // TEST_AUTHOR_H

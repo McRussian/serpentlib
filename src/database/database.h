@@ -1,29 +1,25 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <QObject>
 #include <QSqlDatabase>
 #include <QSqlError>
-#include <QSqlQuery>
-#include <QFile>
-#include <QDebug>
+#include <QString>
 
-class DataBase : public QObject
+class DataBase
 {
-    Q_OBJECT
-
 public:
-    explicit DataBase(QObject *parent = nullptr);
-    ~DataBase();
+    static DataBase& instance();
+    QSqlDatabase& database();
 
-    bool createDatabase(const QString& path);
-    bool openDatabase(const QString& path);
-    void closeDatabase();
-    bool isOpen() const;
-    QSqlError lastError() const;
+    // Запрещаем копирование
+    DataBase(const DataBase&) = delete;
+    DataBase& operator=(const DataBase&) = delete;
 
 private:
-    QSqlDatabase m_db;
+    DataBase(const QString& path = ":memory:"); // private конструктор
+    ~DataBase();
+
+    QSqlDatabase m_db; // Не статическое поле
 };
 
 #endif // DATABASE_H

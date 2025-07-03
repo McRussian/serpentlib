@@ -7,6 +7,8 @@
 #include <QSqlError>
 #include <QDebug>
 
+#include "../database.h"
+
 class Author
 {
 public:
@@ -28,12 +30,17 @@ public:
     void setComment(const QString &comment);
 
     // Статические методы для работы с БД
-    static void setDatabase(QSqlDatabase* database);
     static bool createTable();
 
     // Методы экземпляра
     bool save();
     bool update();
+
+#ifdef QT_TESTLIB_LIB
+    static void resetDatabaseConnection() {
+        DataBase::instance().database().close();
+    }
+#endif
 
 private:
     unsigned int m_id;
@@ -41,8 +48,6 @@ private:
     QString m_lastName;
     QString m_surname;
     QString m_comment;
-
-    static QSqlDatabase* s_db;
 };
 
 #endif // AUTHOR_H

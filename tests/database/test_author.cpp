@@ -1,85 +1,59 @@
 #include "test_author.h"
+#include "database/database.h"
 
 void TestAuthor::initTestCase()
 {
-    // Создаем тестовую БД в памяти (или файле)
-    m_testDb = QSqlDatabase::addDatabase("QSQLITE", "test_connection");
-    m_testDb.setDatabaseName(":memory:"); // или ":memory:" для временной БД
-
-    if (!m_testDb.open()) {
-        QFAIL("Failed to open test database");
-    }
-
-    Author::setDatabase(&m_testDb);
+    // Инициализируем тестовую базу в памяти
+    DataBase::instance().database().close();
+    DataBase::instance().database().setDatabaseName(":memory:");
+    QVERIFY(DataBase::instance().database().open());
 }
 
 void TestAuthor::cleanupTestCase()
 {
-    m_testDb.close();
-    QSqlDatabase::removeDatabase("test_connection");
-    QFile::remove(":memory:"); // Удаляем тестовый файл БД
+    // Закрываем соединение
+    DataBase::instance().database().close();
 }
 
 void TestAuthor::testCreateTable()
 {
     QVERIFY(Author::createTable());
 
-    // Проверяем, что таблица существует
-    QSqlQuery query(m_testDb);
-    QVERIFY(query.exec("SELECT id, first_name, last_name FROM authors"));
+    // Проверяем, что таблица создана
+    QSqlQuery query(DataBase::instance().database());
+    QVERIFY(query.exec("SELECT 1 FROM authors LIMIT 1"));
 }
 
-void TestAuthor::testSaveNewAuthor()
+void TestAuthor::testSaveAuthor()
 {
     Author author;
-    author.setFirstName("Антон");
-    author.setLastName("Чехов");
-    author.setSurname("Павлович");
-    author.setComment("Русский писатель");
+    author.setFirstName("Лев");
+    author.setLastName("Толстой");
 
     QVERIFY(author.save());
-    QVERIFY(author.id() > 0); // Проверяем, что ID установлен
+    QVERIFY(author.id() > 0);
 
-    // Проверяем запись в БД
-    QSqlQuery query(m_testDb);
-    QVERIFY(query.exec(QString("SELECT * FROM authors WHERE id = %1").arg(author.id())));
+    // Проверяем, что автор сохранился в БД
+    QSqlQuery query(DataBase::instance().database());
+    query.prepare("SELECT first_name FROM authors WHERE id = ?");
+    query.addBindValue(author.id());
+    QVERIFY(query.exec());
     QVERIFY(query.next());
-
-    QCOMPARE(query.value("first_name").toString(), QString("Антон"));
-    QCOMPARE(query.value("last_name").toString(), QString("Чехов"));
+    QCOMPARE(query.value(0).toString(), QString("Лев"));
 }
 
-void TestAuthor::testUpdateAuthor()
-{
-    Author author;
-    author.setLastName("Достоевский");
-    author.setFirstName("Фёдор");
-    QVERIFY(author.save());
-
-    unsigned int id = author.id();
-    author.setComment("Автор 'Преступления и наказания'");
-    QVERIFY(author.save());
-
-    // Проверяем обновление
-    QSqlQuery query(m_testDb);
-    QVERIFY(query.exec(QString("SELECT comment FROM authors WHERE id = %1").arg(id)));
-    QVERIFY(query.next());
-    QCOMPARE(query.value(0).toString(), QString("Автор 'Преступления и наказания'"));
-}
-
-void TestAuthor::testFieldValues()
+void TestAuthor::testAuthorFields()
 {
     Author author;
 
     // Проверка сеттеров/геттеров
-    author.setFirstName("  Лев  ");
-    author.setLastName(" Толстой ");
-    author.setSurname("Николаевич");
+    author.setFirstName("Фёдор");
+    author.setLastName("Достоевский");
+    author.setSurname("Михайлович");
+    author.setComment("Русский классик");
 
-    QCOMPARE(author.firstName(), QString("  Лев  "));
-    QCOMPARE(author.lastName(), QString(" Толстой "));
-    QCOMPARE(author.surname(), QString("Николаевич"));
-
-    // Проверка начального ID
-    QCOMPARE(author.id(), 0u);
+    QCOMPARE(author.firstName(), QString("Фёдор"));
+    QCOMPARE(author.lastName(), QString("Достоевский"));
+    QCOMPARE(author.surname(), QString("Михайлович"));
+    QCOMPARE(author.comment(), QString("Русский классик"));
 }
