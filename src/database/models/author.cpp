@@ -1,5 +1,15 @@
 #include "author.h"
 
+// Визначення полів та їх типів
+const QMap<QString, QString> Author::FieldDefinitions = {
+    {"id", "INTEGER PRIMARY KEY AUTOINCREMENT"},
+    {"last_name", "TEXT NOT NULL"},
+    {"first_name", "TEXT NOT NULL"},
+    {"surname", "TEXT"},
+    {"comment", "TEXT"}
+};
+
+
 Author::Author() :
     m_id(0),
     m_firstName(""),
@@ -32,12 +42,87 @@ bool Author::createTable()
 {
     QSqlDatabase& db = DataBase::instance().database();
     QSqlQuery query(db);
-    return query.exec("CREATE TABLE IF NOT EXISTS authors ("
-                      "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                      "first_name TEXT, "
-                      "last_name TEXT NOT NULL, "
-                      "surname TEXT, "
-                      "comment TEXT)");
+    QStringList fields;
+    for (auto it = FieldDefinitions.constBegin(); it != FieldDefinitions.constEnd(); ++it) {
+        fields << QString("%1 %2").arg(it.key()).arg(it.value());
+    }
+
+    QString sql = QString("CREATE TABLE IF NOT EXISTS authors (%1)").arg(fields.join(", "));
+
+    if (!query.exec(sql)) {
+        qCritical() << "Failed to create table:" << query.lastError();
+        return false;
+    }
+    return true;
+}
+
+bool Author::verifyTableStructure()
+{
+    if (!tableExists()) {
+        qDebug() << "Table 'authors' does not exist";
+        return false;
+    }
+
+    QSqlDatabase& db = DataBase::instance().database();
+    QSqlQuery query(db);
+
+    if (!query.exec("PRAGMA table_info(authors)")) {
+        qCritical() << "Failed to get table info:" << query.lastError();
+        return false;
+    }
+
+    QMap<QString, QString> dbFields;
+    while (query.next()) {
+        QString name = query.value("name").toString();
+        QString type = query.value("type").toString();
+        QString notnull = query.value("notnull").toString();
+        QString pk = query.value("pk").toString();
+
+        // Формуємо тип як в FieldDefinitions
+        QString fullType = type;
+        if (pk == "1") fullType.prepend("PRIMARY KEY ");
+        if (notnull == "1") fullType += " NOT NULL";
+
+        dbFields.insert(name, fullType);
+    }
+
+    for (auto it = FieldDefinitions.constBegin(); it != FieldDefinitions.constEnd(); ++it) {
+        if (!dbFields.contains(it.key())) {
+            qDebug() << "Missing field:" << it.key();
+            return false;
+        }
+
+        QString expectedType = it.value().toUpper()
+                                   .replace("PRIMARY KEY", "").replace("AUTOINCREMENT", "").trimmed();
+        QString actualType = dbFields[it.key()].toUpper()
+                                 .replace("PRIMARY KEY", "").replace("AUTOINCREMENT", "").trimmed();
+
+        if (actualType != expectedType) {
+            qDebug() << "Type mismatch for field" << it.key()
+            << "Expected:" << expectedType
+            << "Actual:" << actualType;
+            return false;
+        }
+    }
+
+    // 2. Перевіряємо, що немає зайвих полів
+    for (auto it = dbFields.constBegin(); it != dbFields.constEnd(); ++it) {
+        if (!FieldDefinitions.contains(it.key())) {
+            qDebug() << "Extra field in database:" << it.key();
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+bool Author::tableExists()
+{
+    QSqlDatabase& db = DataBase::instance().database();
+    QSqlQuery query(db);
+    return query.exec("SELECT 1 FROM sqlite_master WHERE type='table' AND name='authors'")
+           && query.next();
 }
 
 // Методы экземпляра
@@ -92,3 +177,4 @@ bool Author::update()
 
     return true;
 }
+

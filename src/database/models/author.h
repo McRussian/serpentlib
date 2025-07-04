@@ -2,6 +2,7 @@
 #define AUTHOR_H
 
 #include <QString>
+#include <QMap>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -32,6 +33,8 @@ public:
 
     // Статические методы для работы с БД
     static bool createTable();
+    static bool verifyTableStructure();
+    static const QMap<QString, QString> FieldDefinitions;
 
     // Методы экземпляра
     bool save();
@@ -44,6 +47,8 @@ public:
 #endif
 
 private:
+    static bool tableExists();
+
     unsigned int m_id;
     QString m_firstName;
     QString m_lastName;

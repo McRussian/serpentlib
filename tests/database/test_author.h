@@ -4,7 +4,7 @@
 #include <QtTest>
 #include "../../src/database/models/author.h"
 
-class TestAuthor : public QObject
+class TestAuthorCorrectTable : public QObject
 {
     Q_OBJECT
 
@@ -17,6 +17,27 @@ private slots:
 
 private:
     const QString TEST_DB = ":memory:"; // Используем временную базу в памяти
+};
+
+
+class TestAuthorCheckStructureTable : public QObject
+{
+    Q_OBJECT
+
+private slots:
+    void initTestCase();    // Выполняется перед всеми тестами
+    void cleanupTestCase(); // Выполняется после всех тестов
+
+    void testValidStructure();
+    void testMissingTable();
+    void testMissingField();
+    void testTypeMismatch();
+    void testExtraField();
+
+private:
+    QSqlDatabase m_db;
+    void createValidTable();
+    void dropTable();
 };
 
 #endif // TEST_AUTHOR_H
