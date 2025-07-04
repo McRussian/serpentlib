@@ -10,10 +10,12 @@ CONFIG += automoc
 # Исходники тестов
 SOURCES += \
     main.cpp \
-    test_normalize_string.cpp
+    test_normalize_string.cpp \
+    test_normilize_text.cpp
 
 HEADERS += \
-    test_normalize_string.h
+    test_normalize_string.h \
+    test_normilize_text.h
 
 # Правильные пути к исходникам основного проекта
 INCLUDEPATH += $$PWD/../../src
