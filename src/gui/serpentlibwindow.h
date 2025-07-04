@@ -6,6 +6,10 @@
 #include <QMenuBar>
 #include <QAction>
 #include <QMessageBox>
+#include <QFileDialog>
+
+#include "author_form.h"
+#include "../database/models/author.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -1,64 +1,65 @@
 #include "test_normalize_string.h"
+#include "../../src/lib/field.h" // Предполагается, что функция находится здесь
 
-void TestNormalizeString::test_emptyString()
+void TestNormalizeName::test_emptyString()
 {
     QString input = "";
     QString expected = "";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_singleWord()
+void TestNormalizeName::test_singleWord()
 {
     QString input = "hello";
     QString expected = "Hello";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_multipleWords()
+void TestNormalizeName::test_multipleWords()
 {
     QString input = "hello world";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_leadingTrailingSpaces()
+void TestNormalizeName::test_leadingTrailingSpaces()
 {
     QString input = "  hello world  ";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_multipleSpacesBetweenWords()
+void TestNormalizeName::test_multipleSpacesBetweenWords()
 {
     QString input = "hello   world";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_mixedCase()
+void TestNormalizeName::test_mixedCase()
 {
     QString input = "hElLo WoRlD";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_allUpperCase()
+void TestNormalizeName::test_allUpperCase()
 {
     QString input = "HELLO WORLD";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_allLowerCase()
+void TestNormalizeName::test_allLowerCase()
 {
     QString input = "hello world";
     QString expected = "Hello World";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }
 
-void TestNormalizeString::test_singleLetterWords()
+void TestNormalizeName::test_singleLetterWords()
 {
     QString input = "a b c d";
     QString expected = "A B C D";
-    QCOMPARE(normalize(input), expected);
+    QCOMPARE(normalizeName(input), expected);
 }

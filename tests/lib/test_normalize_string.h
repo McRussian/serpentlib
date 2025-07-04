@@ -2,9 +2,8 @@
 #define TEST_NORMALIZE_STRING_H
 
 #include <QtTest>
-#include "../../src/lib/field.h" // Предполагается, что функция находится здесь
 
-class TestNormalizeString : public QObject
+class TestNormalizeName : public QObject
 {
     Q_OBJECT
 

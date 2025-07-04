@@ -9,6 +9,7 @@
 
 #include "../database.h"
 
+
 class Author
 {
 public:

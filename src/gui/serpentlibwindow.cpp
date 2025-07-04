@@ -49,11 +49,16 @@ void SerpentLibWindow::createMenus()
 
 // Реализация слотов
 void SerpentLibWindow::createDatabase() {
-    QMessageBox::information(this, "Создание", "Создание новой базы данных");
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Open DataBase"), ".", tr("DataBase Files (*.db *.sqlite)"));
+    DataBase::instance(fileName).database().setDatabaseName(fileName);
+    Author::createTable();
 }
 
 void SerpentLibWindow::openDatabase() {
-    QMessageBox::information(this, "Открытие", "Открытие существующей базы");
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Open DataBase"), ".", tr("DataBase Files (*.db *.sqlite)"));
+    DataBase::instance(fileName).database().setDatabaseName(fileName);
 }
 
 void SerpentLibWindow::createBook() {
@@ -65,7 +70,15 @@ void SerpentLibWindow::searchBook() {
 }
 
 void SerpentLibWindow::createAuthor() {
-    QMessageBox::information(this, "Авторы", "Создание нового автора");
+    AuthorForm *childWidget = new AuthorForm();
+
+    // Соединяем сигнал закрытия со слотом
+    connect(childWidget, &QWidget::destroyed, this, [this]() {
+        qDebug() << "Виджет уничтожен";
+    });
+
+    // Показываем (не блокируя основной поток)
+    childWidget->show();
 }
 
 void SerpentLibWindow::searchAuthor() {

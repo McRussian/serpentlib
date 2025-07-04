@@ -5,10 +5,11 @@
 #include <QSqlError>
 #include <QString>
 
+
 class DataBase
 {
 public:
-    static DataBase& instance();
+    static DataBase& instance(const QString& path = ":memory:");
     QSqlDatabase& database();
 
     // Запрещаем копирование

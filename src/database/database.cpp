@@ -2,9 +2,9 @@
 #include <QDebug>
 
 // Определяем статический экземпляр
-DataBase& DataBase::instance()
+DataBase& DataBase::instance(const QString& path)
 {
-    static DataBase instance; // Создается при первом вызове
+    static DataBase instance(path); // Создается при первом вызове
     return instance;
 }
 
