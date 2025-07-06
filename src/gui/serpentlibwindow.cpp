@@ -59,6 +59,13 @@ void SerpentLibWindow::openDatabase() {
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Open DataBase"), ".", tr("DataBase Files (*.db *.sqlite)"));
     DataBase::instance(fileName).database().setDatabaseName(fileName);
+    if (Author::tableExists())
+        if (!Author::verifyTableStructure()) {
+            QErrorMessage errorDialog;
+            errorDialog.showMessage("Неверный формат базы данных, создайте новую.");
+            errorDialog.exec();
+        }
+        else Author::createTable();
 }
 
 void SerpentLibWindow::createBook() {
@@ -82,7 +89,15 @@ void SerpentLibWindow::createAuthor() {
 }
 
 void SerpentLibWindow::searchAuthor() {
-    QMessageBox::information(this, "Авторы", "Поиск авторов");
+    AuthorSelectionWidget* selectAuthorWidget = new AuthorSelectionWidget();
+
+    // Соединяем сигнал закрытия со слотом
+    connect(selectAuthorWidget, &QWidget::destroyed, this, [this]() {
+        qDebug() << "Виджет уничтожен";
+    });
+
+    // Показываем (не блокируя основной поток)
+    selectAuthorWidget->show();
 }
 
 

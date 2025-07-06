@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 16.0.1, 2025-07-04T22:54:12. -->
+<!-- Written by QtCreator 16.0.1, 2025-07-06T22:49:49. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -71,7 +71,46 @@
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
    <value type="bool" key="AutoTest.ApplyFilter">false</value>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestAuthorCheckStructureTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestAuthorCorrectTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestGetAuthor">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:cleanup">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:cleanupTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:init">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:initTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testAuthorFields">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testCreateTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testExtraField">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetAllAuthors">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetByIdNotFound">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetByIdSuccess">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetEmptyTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testMissingField">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testMissingTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testSaveAuthor">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testTypeMismatch">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testValidStructure">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:TestNormalizeName">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allLowerCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allUpperCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_emptyString">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_leadingTrailingSpaces">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_mixedCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_multipleSpacesBetweenWords">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_multipleWords">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_singleLetterWords">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_singleWord">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:TestNormalizeText">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testCaseNormalization">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testEmptyLines">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testEnglishText">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testHyphenAndApostrophe">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testMixedText">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testPunctuation">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testRussianText">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normilize_text.h:testSingleWordLines">Unchecked</value>
+   </valuemap>
    <valuelist type="QVariantList" key="AutoTest.PathFilters"/>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
@@ -257,7 +296,45 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/andrey/Programming/QT/serpentlib/build/Desktop-Debug/src</value>
    </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="int" key="Analyzer.Valgrind.Callgrind.CostFormat">0</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
+    <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/andrey/Programming/QT/serpentlib/tests/database/database.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/andrey/Programming/QT/serpentlib/build/Desktop-Debug/tests/database</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="int" key="Analyzer.Valgrind.Callgrind.CostFormat">0</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
+    <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/andrey/Programming/QT/serpentlib/tests/lib/lib.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/andrey/Programming/QT/serpentlib/build/Desktop-Debug/tests/lib</value>
+   </valuemap>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">3</value>
   </valuemap>
  </data>
  <data>

@@ -6,9 +6,11 @@
 #include <QMenuBar>
 #include <QAction>
 #include <QMessageBox>
+#include <QErrorMessage>
 #include <QFileDialog>
 
 #include "author_form.h"
+#include "author_selection_widget.h"
 #include "../database/models/author.h"
 
 QT_BEGIN_NAMESPACE

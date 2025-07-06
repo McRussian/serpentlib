@@ -7,14 +7,19 @@ int main(int argc, char *argv[])
     int status = 0;
 
     {
-        TestAuthorCorrectTable tavt;
+        TestAuthorCorrectTable test_case1;
 
-        status |= QTest::qExec(&tavt, argc, argv);
+        status |= QTest::qExec(&test_case1, argc, argv);
     }
 
     {
-        TestAuthorCheckStructureTable tacst;
-        status |= QTest::qExec(&tacst, argc, argv);
+        TestAuthorCheckStructureTable test_case2;
+        status |= QTest::qExec(&test_case2, argc, argv);
+    }
+
+    {
+        TestGetAuthor test_case3;
+        status |= QTest::qExec(&test_case3, argc, argv);
     }
 
     return status;

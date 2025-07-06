@@ -25,7 +25,11 @@ public:
     QString surname() const;
     QString comment() const;
 
+    QString briefName() const;
+    QString fullName() const;
+
     // Сеттеры
+    void setId(const unsigned int newId);
     void setFirstName(const QString &firstName);
     void setLastName(const QString &lastName);
     void setSurname(const QString &surname);
@@ -34,6 +38,17 @@ public:
     // Статические методы для работы с БД
     static bool createTable();
     static bool verifyTableStructure();
+    static bool tableExists();
+    // Статические методы для работы с БД
+    static QList<Author> get();
+    static Author getById(unsigned int id);
+
+    // Исключение для случая, когда автор не найден
+    class NotFoundException : public std::runtime_error {
+    public:
+        NotFoundException() : std::runtime_error("Author not found") {}
+    };
+
     static const QMap<QString, QString> FieldDefinitions;
 
     // Методы экземпляра
@@ -46,9 +61,9 @@ public:
     }
 #endif
 
-private:
-    static bool tableExists();
 
+
+private:
     unsigned int m_id;
     QString m_firstName;
     QString m_lastName;

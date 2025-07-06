@@ -40,4 +40,30 @@ private:
     void dropTable();
 };
 
+
+class TestGetAuthor : public QObject
+{
+    Q_OBJECT
+
+public:
+    TestGetAuthor();
+    ~TestGetAuthor();
+
+private slots:
+    void initTestCase();    // Выполняется перед всеми тестами
+    void cleanupTestCase(); // Выполняется после всех тестов
+    void init();           // Выполняется перед каждым тестом
+    void cleanup();        // Выполняется после каждого теста
+
+    void testGetAllAuthors();
+    void testGetByIdSuccess();
+    void testGetByIdNotFound();
+    void testGetEmptyTable();
+
+private:
+    void clearTestData();
+    unsigned int m_testAuthorId;
+};
+
+
 #endif // TEST_AUTHOR_H
