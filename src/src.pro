@@ -6,6 +6,7 @@ CONFIG += c++17
 SOURCES += \
     database/database.cpp \
     database/models/author.cpp \
+    database/models/base_model.cpp \
     gui/author_form.cpp \
     gui/author_selection_widget.cpp \
     main.cpp \
@@ -15,6 +16,7 @@ SOURCES += \
 HEADERS += \
     database/database.h \
     database/models/author.h \
+    database/models/base_model.h \
     gui/author_form.h \
     gui/author_selection_widget.h \
     gui/serpentlibwindow.h \
