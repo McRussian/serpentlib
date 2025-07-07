@@ -9,7 +9,8 @@ SOURCES += \
     gui/author_form.cpp \
     gui/author_selection_widget.cpp \
     main.cpp \
-    gui/serpentlibwindow.cpp
+    gui/serpentlibwindow.cpp \
+    settings_application.cpp
 
 HEADERS += \
     database/database.h \
@@ -17,7 +18,8 @@ HEADERS += \
     gui/author_form.h \
     gui/author_selection_widget.h \
     gui/serpentlibwindow.h \
-    lib/field.h
+    lib/field.h \
+    settings_application.h
 
 FORMS += \
     gui/ui/author_form.ui \
