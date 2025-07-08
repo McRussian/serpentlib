@@ -3,22 +3,28 @@
 
 #include <QSqlDatabase>
 #include <QSqlError>
+#include <QSqlQuery>
 #include <QString>
 
+#include "models/base_model.h"
+#include "models/author.h"
 
 class DataBase
 {
 public:
-    static DataBase& instance(const QString& path = ":memory:");
-    QSqlDatabase& database();
-
+    DataBase();
+    ~DataBase();
+    void create(QString filename);
+    void open(QString filename);
+    bool is_open();
     // Запрещаем копирование
     DataBase(const DataBase&) = delete;
     DataBase& operator=(const DataBase&) = delete;
 
 private:
-    DataBase(const QString& path = ":memory:"); // private конструктор
-    ~DataBase();
+    void initialize(QString filename);
+    void initModels();
+    void checkTables();
 
     QSqlDatabase m_db; // Не статическое поле
 };

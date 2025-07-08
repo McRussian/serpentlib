@@ -14,6 +14,7 @@ SOURCES += \
 
 HEADERS += \
     database/database.h \
+    database/dbexception.h \
     database/models/author.h \
     database/models/base_model.h \
     gui/author_form.h \

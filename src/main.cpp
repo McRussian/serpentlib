@@ -1,13 +1,15 @@
+#include <QApplication>
+
 #include "gui/serpentlibwindow.h"
 #include "settings_application.h"
-
-#include <QApplication>
+#include "database/database.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     SettingsApplication *settings = new SettingsApplication();
-    SerpentLibWindow w(settings);
+    DataBase *db = new DataBase();
+    SerpentLibWindow w(settings, db);
     w.show();
     return a.exec();
 }

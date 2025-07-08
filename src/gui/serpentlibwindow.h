@@ -12,6 +12,8 @@
 #include "author_form.h"
 #include "author_selection_widget.h"
 #include "../settings_application.h"
+#include "../database/database.h"
+#include "../database/dbexception.h"
 #include "../database/models/author.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,7 +27,7 @@ class SerpentLibWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    SerpentLibWindow(SettingsApplication* settings, QWidget *parent = nullptr);
+    SerpentLibWindow(SettingsApplication* settings, DataBase *db, QWidget *parent = nullptr);
     ~SerpentLibWindow();
 
 private slots:
@@ -40,9 +42,11 @@ private slots:
 
 private:
     void createMenus();
+    void showError(QString);
     QMenu *settingsMenu;
     QMenu *libraryMenu;
     Ui::SerpentLibWindow *ui;
     SettingsApplication *settings_;
+    DataBase *db_;
 };
 #endif // SERPENTLIBWINDOW_H

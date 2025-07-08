@@ -1,29 +1,71 @@
 #include "database.h"
+#include "dbexception.h"
 #include <QDebug>
+#include <QFileInfo>
 
-// Определяем статический экземпляр
-DataBase& DataBase::instance(const QString& path)
+DataBase::DataBase()
 {
-    static DataBase instance(path); // Создается при первом вызове
-    return instance;
-}
 
-DataBase::DataBase(const QString& path)
-{
-    m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setDatabaseName(path);
-
-    if (!m_db.open()) {
-        qCritical() << "Failed to open database:" << m_db.lastError();
-    }
 }
 
 DataBase::~DataBase()
 {
-    m_db.close();
+    if (is_open())
+        m_db.close();
 }
 
-QSqlDatabase& DataBase::database()
+void DataBase::create(QString filename)
 {
-    return m_db;
+    initialize(filename);
+    initModels();
+}
+
+void DataBase::open(QString filename)
+{
+    initialize(filename);
+    checkTables();
+}
+
+bool DataBase::is_open()
+{
+    return m_db.isOpen();
+}
+
+void DataBase::initialize(QString filename)
+{
+    if (m_db.isOpen()) {
+        return;
+    }
+
+    QFileInfo fileInfo(filename);
+    if (!fileInfo.exists() || !fileInfo.isFile()) {
+            throw DBException(QString("Failed to create database directory: %1").arg(filename));
+    }
+
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName(filename);
+
+    if (!m_db.open()) {
+        throw DBException("Cannot open database", m_db.lastError());
+    }
+
+    QSqlQuery query("PRAGMA foreign_keys = ON;", m_db);
+    if (!query.exec()) {
+        throw DBException("Failed to enable foreign keys", query.lastError());
+    }
+}
+
+void DataBase::initModels()
+{
+    BaseModel<Author>::setDatabase(&m_db);
+    if (!Author::createTable())
+        throw DBException(QString("Failed to create table: %1").arg(Author().tableName()));
+}
+
+void DataBase::checkTables()
+{
+    BaseModel<Author>::setDatabase(&m_db);
+
+    if (!Author::validateTable())
+        throw DBException(QString("Uncorrect format table: %1").arg(Author().tableName()));
 }

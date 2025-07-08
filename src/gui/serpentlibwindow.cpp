@@ -1,8 +1,9 @@
 #include "serpentlibwindow.h"
 #include "ui_serpentlibwindow.h"
 
-SerpentLibWindow::SerpentLibWindow(SettingsApplication *setting, QWidget *parent)
+SerpentLibWindow::SerpentLibWindow(SettingsApplication *setting, DataBase *db, QWidget *parent)
     : settings_(setting)
+    , db_(db)
     , QMainWindow(parent)
     , ui(new Ui::SerpentLibWindow)
 {
@@ -19,8 +20,11 @@ SerpentLibWindow::SerpentLibWindow(SettingsApplication *setting, QWidget *parent
     }
     else
     {
-        DataBase::instance(settings_->getDatabasePath()).database().setDatabaseName(settings_->getDatabasePath());
-        Author::createTable();
+        try {
+            db_->open(settings_->getDatabasePath());
+        } catch (const DBException& e) {
+            showError(e.message());
+        }
     }
 }
 
@@ -64,30 +68,34 @@ void SerpentLibWindow::createMenus()
     libraryMenu->setEnabled(false);
 }
 
+void SerpentLibWindow::showError(QString msg)
+{
+    QErrorMessage err(this);
+    err.showMessage(msg);
+}
+
 // Реализация слотов
 void SerpentLibWindow::createDatabase() {
-    QString fileName = QFileDialog::getSaveFileName(this,
+    QString filename = QFileDialog::getSaveFileName(this,
                                                     tr("Open DataBase"), ".", tr("DataBase Files (*.db *.sqlite)"));
-    DataBase::instance(fileName).database().setDatabaseName(fileName);
-    Author::createTable();
-    settings_->setDatabasePath(fileName);
+    try {
+        db_->create(filename);
+        settings_->setDatabasePath(filename);
+    } catch (const DBException& e) {
+        showError(e.message());
+    }
 }
 
 void SerpentLibWindow::openDatabase() {
-    QString fileName = QFileDialog::getOpenFileName(this,
+    QString filename = QFileDialog::getOpenFileName(this,
                                                     tr("Open DataBase"), ".", tr("DataBase Files (*.db *.sqlite)"));
-    DataBase::instance(fileName).database().setDatabaseName(fileName);
-    if (Author::tableExists()) {
-        if (!Author::verifyTableStructure()) {
-            QErrorMessage errorDialog;
-            errorDialog.showMessage("Неверный формат базы данных, создайте новую.");
-            errorDialog.exec();
-        }
+
+    try {
+        db_->open(filename);
+        settings_->setDatabasePath(filename);
+    } catch (const DBException& e) {
+        showError(e.message());
     }
-    else {
-        Author::createTable();
-    }
-    settings_->setDatabasePath(fileName);
 }
 
 void SerpentLibWindow::createBook() {
@@ -125,7 +133,7 @@ void SerpentLibWindow::searchAuthor() {
 void SerpentLibWindow::updateMenuState()
 {
     // Пример условия - база данных выбрана
-    bool dbSelected = !settings_->getDatabasePath().isEmpty();
+    bool dbSelected = !settings_->getDatabasePath().isEmpty() and db_->is_open();
 
     // Активируем/деактивируем меню
     libraryMenu->setEnabled(dbSelected);
