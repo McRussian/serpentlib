@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 16.0.1, 2025-07-06T22:49:49. -->
+<!-- Written by QtCreator 16.0.1, 2025-07-08T13:44:41. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -91,6 +91,13 @@
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testSaveAuthor">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testTypeMismatch">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testValidStructure">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:TestBaseModel">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:cleanupTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:initTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testCreateTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testGetById">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testInsertAndGet">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testValidateTable">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:TestNormalizeName">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allLowerCase">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allUpperCase">Unchecked</value>
@@ -188,7 +195,7 @@
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">true</value>
       <valuelist type="QVariantList" key="QtProjectManager.QMakeBuildStep.SelectedAbis"/>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
@@ -229,7 +236,7 @@
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">true</value>
       <valuelist type="QVariantList" key="QtProjectManager.QMakeBuildStep.SelectedAbis"/>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">

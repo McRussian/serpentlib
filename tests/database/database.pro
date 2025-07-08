@@ -10,16 +10,20 @@ CONFIG += automoc
 # Исходники тестов
 SOURCES += \
     test_author.cpp \
-    main.cpp
+    main.cpp \
+    test_base_model.cpp
 
 HEADERS += \
-    test_author.h
+    test_author.h \
+    test_base_model.h \
+    test_model.h
 
 # Правильные пути к исходникам основного проекта
 INCLUDEPATH += $$PWD/../../src
 DEPENDPATH += $$PWD/../../src
 
 # Подключаемые классы
+HEADERS += $$PWD/../../src/database/models/base_model.h
 SOURCES += $$PWD/../../src/database/models/author.cpp
 HEADERS += $$PWD/../../src/database/models/author.h
 SOURCES += $$PWD/../../src/database/database.cpp

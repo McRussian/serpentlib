@@ -6,7 +6,6 @@ CONFIG += c++17
 SOURCES += \
     database/database.cpp \
     database/models/author.cpp \
-    database/models/base_model.cpp \
     gui/author_form.cpp \
     gui/author_selection_widget.cpp \
     main.cpp \
