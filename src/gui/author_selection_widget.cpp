@@ -50,7 +50,7 @@ AuthorSelectionWidget::AuthorSelectionWidget(QWidget *parent)
     mainLayout->addLayout(rightLayout);
     setLayout(mainLayout);
 
-    populateTable(Author::get());
+    populateTable(Author::getAll());
 }
 
 void AuthorSelectionWidget::populateTable(const QVector<Author>& authors)
