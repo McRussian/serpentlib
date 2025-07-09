@@ -54,6 +54,8 @@ void TestBaseModel::testCreateTable()
 
     QVERIFY(hasIdField);
     QCOMPARE(fieldCount, 3); // id, username, email
+
+    QCOMPARE(TestUserModel::count(), 0);
 }
 
 void TestBaseModel::testTableExists()
@@ -86,6 +88,8 @@ void TestBaseModel::testSaveNewObject()
     QVERIFY(user.save());
     QVERIFY(user.id() > 0);
     QVERIFY(user.existsInDb());
+    QCOMPARE(TestUserModel::count(), 1);
+    recreateTestTable();
 }
 
 void TestBaseModel::testUpdateObject()
@@ -106,6 +110,7 @@ void TestBaseModel::testUpdateObject()
     TestUserModel loadedUser;
     QVERIFY(loadedUser.load(originalId));
     QCOMPARE(loadedUser.username(), QString("updated"));
+    recreateTestTable();
 }
 
 void TestBaseModel::testLoadObject()
@@ -123,6 +128,7 @@ void TestBaseModel::testLoadObject()
     QVERIFY(user.load(insertedId));
     QCOMPARE(user.username(), QString("loaded_user"));
     QCOMPARE(user.email(), QString("loaded@example.com"));
+    recreateTestTable();
 }
 
 void TestBaseModel::testRemoveObject()
@@ -131,6 +137,7 @@ void TestBaseModel::testRemoveObject()
     user.setUsername("to_delete");
     user.setEmail("delete@example.com");
     QVERIFY(user.save());
+    QCOMPARE(TestUserModel::count(), 1);
 
     unsigned int idToDelete = user.id();
     QVERIFY(user.remove());
@@ -139,6 +146,8 @@ void TestBaseModel::testRemoveObject()
     // Проверяем что записи больше нет в БД
     TestUserModel checkUser;
     QVERIFY(!checkUser.load(idToDelete));
+    QCOMPARE(TestUserModel::count(), 0);
+    recreateTestTable();
 }
 
 void TestBaseModel::testGetAllObjects()
@@ -153,6 +162,7 @@ void TestBaseModel::testGetAllObjects()
         QVERIFY(user.save());
     }
 
+    QCOMPARE(TestUserModel::count(), 3);
     QList<TestUserModel> allUsers = TestUserModel::getAll();
     QCOMPARE(allUsers.size(), 3);
 

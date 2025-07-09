@@ -114,6 +114,20 @@ public:
         return result;
     }
 
+    static int count() {
+        QSqlQuery query(Derived().database());
+        if (!query.exec(QString("SELECT COUNT(*) FROM %1").arg(Derived().tableName()))) {
+            qWarning() << "Failed to count records:" << query.lastError();
+            return -1; // Возвращаем -1 при ошибке
+        }
+
+        if (query.next()) {
+            return query.value(0).toInt();
+        }
+
+        return 0;
+    }
+
     // === Методы работы с объектом ===
     bool save() {
         if (m_id != 0) {
