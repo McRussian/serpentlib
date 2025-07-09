@@ -3,6 +3,23 @@ QT += core gui sql widgets
 TARGET = SerpentLib
 CONFIG += c++17
 
+# Явно указываем линковку с SQLite3
+unix {
+    # Для Linux и macOS
+    # LIBS += -lsqlite3
+    # Если библиотека в нестандартном месте:
+    LIBS += -L/usr/lib64 -lsqlite3
+    INCLUDEPATH += /usr/include
+}
+
+win32 {
+    # Для Windows
+    LIBS += -lsqlite3
+    # Или если используете свою сборку:
+    # LIBS += -L$$PWD/../sqlite3 -lsqlite3
+    # INCLUDEPATH += $$PWD/../sqlite3/include
+}
+
 SOURCES += \
     database/database.cpp \
     database/models/author.cpp \

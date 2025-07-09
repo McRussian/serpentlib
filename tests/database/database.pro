@@ -11,11 +11,13 @@ CONFIG += automoc
 SOURCES += \
     test_author.cpp \
     main.cpp \
-    test_base_model.cpp
+    test_base_model.cpp \
+    test_database_hook.cpp
 
 HEADERS += \
     test_author.h \
     test_base_model.h \
+    test_database_hook.h \
     test_model.h
 
 # Правильные пути к исходникам основного проекта

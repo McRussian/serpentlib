@@ -2,10 +2,10 @@
 #include "ui_serpentlibwindow.h"
 
 SerpentLibWindow::SerpentLibWindow(SettingsApplication *setting, DataBase *db, QWidget *parent)
-    : settings_(setting)
-    , db_(db)
-    , QMainWindow(parent)
+    : QMainWindow(parent)
     , ui(new Ui::SerpentLibWindow)
+    , settings_(setting)
+    , db_(db)
 {
     ui->setupUi(this);
     createMenus();

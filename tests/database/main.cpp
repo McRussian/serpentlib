@@ -1,6 +1,7 @@
 #include <QtTest>
 #include "test_base_model.h"
 #include "test_author.h"
+#include "test_database_hook.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,13 @@ int main(int argc, char *argv[])
 
         status |= QTest::qExec(&test_case1, argc, argv);
     }
+
+    {
+        TestDatabaseHooks test_case2;
+
+        status |= QTest::qExec(&test_case2, argc, argv);
+    }
+
 
     return status;
 }

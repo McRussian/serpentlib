@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 16.0.1, 2025-07-08T13:44:41. -->
+<!-- Written by QtCreator 16.0.1, 2025-07-09T21:33:55. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -72,32 +72,38 @@
    </valuemap>
    <value type="bool" key="AutoTest.ApplyFilter">false</value>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestAuthorCheckStructureTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestAuthorCorrectTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestGetAuthor">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:cleanup">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:TestAuthor">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:cleanupTestCase">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:init">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:initTestCase">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testAuthorFields">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testCreateTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testExtraField">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetAllAuthors">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetByIdNotFound">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetByIdSuccess">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetEmptyTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testMissingField">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testMissingTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testSaveAuthor">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testTypeMismatch">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testValidStructure">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testBriefName">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testEmpty">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testFromMap">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testFullName">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testGetters">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testSetters">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_author.h:testToMap">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:TestBaseModel">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:cleanupTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:initTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testCreateTable">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testGetById">Unchecked</value>
-    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testInsertAndGet">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testDoubleSaveProtection">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testGetAllObjects">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testInvalidIdOperations">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testLoadObject">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testRemoveObject">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testSaveNewObject">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testTableExists">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testUpdateObject">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_base_model.h:testValidateTable">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:TestDatabaseHooks">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:cleanupTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:handleTableChange">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:initTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:testDeleteHook">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:testInsertHook">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:testInvalidOperations">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:testMultipleOperations">Unchecked</value>
+    <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/database/test_database_hook.h:testUpdateHook">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:TestNormalizeName">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allLowerCase">Unchecked</value>
     <value type="Qt::CheckState" key="1@/home/andrey/Programming/QT/serpentlib/tests/lib/test_normalize_string.h:test_allUpperCase">Unchecked</value>
